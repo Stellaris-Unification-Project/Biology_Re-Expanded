@@ -1,0 +1,6 @@
+# Shapeshifting Scum
+opinion_shapeshifter = {
+	opinion = {
+		base = -20
+	}
+}

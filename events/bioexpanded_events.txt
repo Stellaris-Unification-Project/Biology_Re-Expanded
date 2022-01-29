@@ -1,0 +1,191 @@
+namespace = bioexpanded
+
+#Cloning Path
+country_event = {
+	id = bioexpanded.1
+	hide_window = yes
+	
+	is_triggered_only = yes
+
+	trigger = {
+		has_policy_flag = set_cloning
+	}
+
+	immediate = {
+		every_owned_planet = {
+			if = {
+				limit = {
+					has_building = building_robot_assembly_plant
+				}
+				remove_building = building_robot_assembly_plant
+				add_building = building_cloning_lab
+			}
+			if = {
+				limit = {
+					has_building = building_clinic
+				}
+				remove_building = building_clinic
+				add_building = building_engineering_firm
+			}
+			if = {
+				limit = {
+					has_building = building_hospital
+				}
+				remove_building = building_hospital
+				add_building = building_engineering_ministry
+			}
+			set_planet_flag = bio_flag
+			remove_planet_flag = robo_flag
+		}
+	}
+}
+
+#Robots Path
+country_event = {
+	id = bioexpanded.2
+	hide_window = yes
+	
+	is_triggered_only = yes
+
+	trigger = {
+		has_policy_flag = set_robots
+	}
+
+	immediate = {
+		every_owned_planet = {
+			if = {
+				limit = {
+					has_building = building_cloning_lab
+				}
+				remove_building = building_cloning_lab
+				add_building = building_robot_assembly_plant
+			}
+			if = {
+				limit = {
+					has_building = building_engineering_firm
+				}
+				remove_building = building_engineering_firm
+				add_building = building_clinic
+			}
+			if = {
+				limit = {
+					has_building = building_engineering_ministry
+				}
+				remove_building = building_engineering_ministry
+				add_building = building_hospital
+			}
+			set_planet_flag = robo_flag
+			remove_planet_flag = bio_flag
+		}
+	}
+}
+
+#Start
+event = {
+	id = bioexpanded.3
+	hide_window = yes
+	
+	fire_only_once = yes
+
+	immediate = {
+		every_owned_planet = {
+			set_planet_flag = robo_flag
+		}
+	}
+}
+
+#Shapeshifting
+country_event = {
+	id = bioexpanded.4
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		random_neighbor_country = {
+			add_opinion_modifier = {
+				who = root
+				modifier = opinion_shapeshifter
+				
+			}
+			random_owned_pop = {
+				save_event_target_as = shapeshifted_species
+			}
+		}
+		every_owned_pop = {
+			limit = {
+				is_same_species = root
+			}
+			modify_species = {
+				species = this
+				portrait = event_target:shapeshifted_species
+				add_trait = trait_shapeshifted
+			}
+		}
+		every_owned_leader = {
+			limit = {
+				is_same_species = root
+			}
+			modify_species = {
+				species = this
+				portrait = event_target:shapeshifted_species
+				add_trait = trait_shapeshifted
+			}
+		}
+		every_pool_leader = {
+			limit = {
+				is_same_species = root
+			}
+			modify_species = {
+				species = this
+				portrait = event_target:shapeshifted_species
+				add_trait = trait_shapeshifted
+			}
+		}
+		country_event = {
+			id = bioexpanded.5
+			days = 7200
+		}
+	}
+}
+
+#Shapeshifting Ends
+country_event = {
+	id = bioexpanded.5
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_owned_pop = {
+			limit = {
+				is_same_species = root
+			}
+			modify_species = {
+				species = this
+				portrait = prevprev
+				remove_trait = trait_shapeshifted
+			}
+		}
+		every_owned_leader = {
+			limit = {
+				is_same_species = root
+			}
+			modify_species = {
+				species = this
+				portrait = prevprev
+				remove_trait = trait_shapeshifted
+			}
+		}
+		every_pool_leader = {
+			limit = {
+				is_same_species = root
+			}
+			modify_species = {
+				species = this
+				portrait = prevprev
+				remove_trait = trait_shapeshifted
+			}
+		}
+		remove_country_flag = shapeshifted
+	}
+}

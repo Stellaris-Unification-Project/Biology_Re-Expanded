@@ -1,0 +1,79 @@
+##########################################################################
+# Empire Policies
+#
+# #####
+#
+# AI:
+# Base AI-weight is 100, if unchanged
+# AI will grab whatever policy-option has the highest weight
+#
+# #####
+#
+##########################################################################
+
+assembly = {
+	potential = {
+		NOT = { has_authority = auth_machine_intelligence }
+		if = {
+			limit = {
+				is_regular_empire = yes
+			}
+			OR = {
+				has_technology = tech_robotic_workers
+				has_technology = tech_frontier_health
+			}
+		}
+		else_if = {
+			limit = {
+				is_hive_empire = yes
+			}
+			has_technology = tech_cloning
+		}
+	}
+
+	option = {
+		name = "robots"
+
+		potential = {
+			NOT = { 
+				has_ethic = ethic_gestalt_consciousness 
+			}
+		}
+
+		policy_flags = {
+			set_robots
+		}
+		
+		ai_weight = {
+			factor = 1
+			modifier = {
+				factor = 2
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
+			}
+		}
+	}
+	
+	option = {
+		name = "cloning"
+
+		potential = {
+			NOT = { 
+				has_authority = auth_machine_intelligence 
+			}
+		}
+		
+		policy_flags = {
+			set_cloning
+		}
+
+		ai_weight = {
+			factor = 1
+			modifier = {
+				factor = 2
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}	
+	}
+}

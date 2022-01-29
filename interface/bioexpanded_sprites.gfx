@@ -1,0 +1,12 @@
+spriteTypes = {
+	
+	################################################################
+	# SLOT ICONS
+	################################################################
+
+	spriteType = {
+		name = "GFX_ap_shapeshifting"
+		texturefile = "gfx/interface/icons/ascension_perks/ap_shapeshifting.dds"
+		alwaystransparent = yes
+	}
+}

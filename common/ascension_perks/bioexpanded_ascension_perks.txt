@@ -1,0 +1,35 @@
+#Shrouded Paradise
+ap_shapeshifting = {
+	potential = {
+		NOT = {
+			has_ascension_perk = ap_shapeshifting
+		}
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_technology_genome_mapping"
+			has_technology = tech_genome_mapping
+		}
+		custom_tooltip = {
+			fail_text = "requires_comms"
+			any_neighbor_country = {
+				has_communications = root
+			}	
+		}
+		custom_tooltip = {
+			fail_text = "requires_shapeshifting_ethoes"
+			has_authority = auth_hive_mind
+		}
+	}
+	
+	on_enabled = {
+		set_country_flag = shapeshifter
+		custom_tooltip = "allow_shapeshifting"
+		custom_tooltip = "describe_shapeshifting"
+	}
+	
+	ai_weight = {
+		factor = 5
+	}
+}

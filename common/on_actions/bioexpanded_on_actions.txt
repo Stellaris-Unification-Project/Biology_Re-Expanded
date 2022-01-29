@@ -1,0 +1,19 @@
+on_policy_changed = {
+	events = {
+		bioexpanded.1
+		bioexpanded.2
+	}
+}
+
+on_game_start = {
+	events = {
+		bioexpanded.3
+	}
+}
+
+on_monthly_pulse_country = {
+	events = {
+		bioexpanded.1
+		bioexpanded.2	
+	}
+}

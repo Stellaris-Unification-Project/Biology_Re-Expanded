@@ -1,0 +1,368 @@
+#Cloning
+
+building_clinic = {
+	base_buildtime = 360
+	base_cap_amount = 1
+
+	category = amenity
+	
+	potential = {
+		owner = { 
+			is_regular_empire = yes 
+			has_policy_flag = set_robots
+		}
+		NOT = { has_modifier = slave_colony }
+	}	
+	
+	allow = {}
+	
+	planet_modifier = {
+		job_healthcare_add = 2
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	prerequisites = {
+		"tech_frontier_health"
+	}
+	
+	upgrades = {
+		"building_hospital"
+	}
+	
+	triggered_desc = {
+		text = job_healthcare_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 50000
+
+		modifier = 
+		{
+			factor = 5
+			free_amenities < 2
+		}
+	}
+}
+
+building_hospital = {
+	base_buildtime = 480
+	can_build = no
+	
+	category = amenity
+	
+	potential = {
+		owner = { 
+			is_regular_empire = yes 
+			has_policy_flag = set_robots
+	}
+		NOT = { has_modifier = slave_colony }
+	}
+	
+	allow = {
+		has_upgraded_capital = yes
+	}
+	
+	planet_modifier = {
+		job_healthcare_add = 5
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 500
+			exotic_gases = 50
+		}
+		upkeep = {
+			energy = 2
+			exotic_gases = 1
+		}
+	}
+	
+	prerequisites = {
+		"tech_frontier_hospital"
+	}
+	
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+
+	triggered_desc = {
+		text = job_healthcare_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 5
+
+		modifier = 
+		{
+			factor = 5
+			free_amenities < 2
+		}
+	}
+}
+
+building_cloning_lab = {
+	base_buildtime = 360
+	base_cap_amount = 1
+
+	category = pop_assembly
+	
+	potential = {
+		owner = { 
+			is_regular_empire = yes 
+			has_policy_flag = set_cloning
+		}
+		NOT = { has_modifier = slave_colony }
+	}
+	
+	planet_modifier = {
+		job_real_cloner_add = 1
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+	
+	triggered_desc = {
+		text = job_real_cloner_effect_desc
+	}	
+	
+	prerequisites = {
+		"tech_frontier_health"
+	}
+	
+	ai_weight = {
+		weight = 100
+	}
+}
+
+#Robotics
+
+building_engineering_firm = {
+	base_buildtime = 360
+	base_cap_amount = 1
+
+	category = research
+	
+	potential = {
+		owner = { 
+			is_regular_empire = yes 
+			has_policy_flag = set_cloning
+		}
+		NOT = { has_modifier = slave_colony }
+	}	
+	
+	allow = {}
+	
+	planet_modifier = {
+		job_engineer_add = 2
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	prerequisites = {
+		"tech_robotic_workers"
+	}
+	
+	upgrades = {
+		"building_engineering_ministry"
+	}
+	
+	triggered_desc = {
+		text = job_engineer_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 50000
+	}
+}
+
+building_engineering_ministry = {
+	base_buildtime = 480
+	can_build = no
+	
+	category = research
+	
+	potential = {
+		owner = { 
+			is_regular_empire = yes 
+			has_policy_flag = set_cloning
+	}
+		NOT = { has_modifier = slave_colony }
+	}
+	
+	allow = {
+		has_upgraded_capital = yes
+	}
+	
+	planet_modifier = {
+		job_engineer_add = 5
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 500
+			volatile_motes = 50
+		}
+		upkeep = {
+			energy = 2
+			volatile_motes = 1
+		}
+	}
+	
+	prerequisites = {
+		"tech_robomodding"
+	}
+	
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+
+	triggered_desc = {
+		text = job_engineer_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 5
+	}
+}
+
+building_robot_assembly_plant = {
+	base_buildtime = 360
+	base_cap_amount = 1
+
+	category = pop_assembly
+	
+	potential = {
+		owner = { 
+			is_regular_empire = yes 
+			NOT = { has_policy_flag = robots_outlawed }
+			has_policy_flag = set_robots
+		}
+		NOT = { has_modifier = slave_colony }
+	}
+	
+	planet_modifier = {
+		job_roboticist_add = 1
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+	
+	triggered_desc = {
+		text = job_roboticist_effect_desc
+	}	
+	
+	prerequisites = {
+		"tech_robotic_workers"
+	}
+	
+	ai_weight = {
+		weight = 100
+	}
+}
+
+#Hive Minds
+
+building_cloning_lab2 = {
+	base_buildtime = 360
+	base_cap_amount = 1
+
+	category = pop_assembly
+	
+	potential = {
+		owner = { 
+			is_hive_empire = yes
+		}
+	}
+	
+	planet_modifier = {
+		job_cloner_drone_add = 1
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+	
+	triggered_desc = {
+		text = job_cloner_drone_effect_desc
+	}	
+	
+	prerequisites = {
+		tech_cloning
+	}
+	
+	ai_weight = {
+		weight = 100
+	}
+}
+
+#Biological path
+building_clone_vats = {
+	base_buildtime = 360
+
+	category = pop_assembly
+	
+	base_cap_amount = 1
+	
+	potential = {
+		owner = { has_ascension_perk = ap_engineered_evolution }
+		NOT = { has_modifier = resort_colony }
+	}
+
+	planet_modifier = {
+		planet_pop_assembly_add = 1
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 200
+		}	
+		upkeep = {
+			energy = 2
+			food = 3
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+	}
+}
