@@ -4,9 +4,10 @@ real_cloner = {
 	building_icon = building_cloning_lab
 	clothes_texture_index = 3
 		
+	possible_precalc = can_fill_specialist_job
+		
 	possible = {
-		specialist_job_check_trigger = yes
-	}
+		}
 	
 	planet_modifier = {
 		planet_pop_assembly_add = 2
@@ -34,9 +35,10 @@ engineer = {
 	building_icon = building_engineering_firm
 	clothes_texture_index = 3
 		
+	possible_precalc = can_fill_specialist_job
+		
 	possible = {
-		specialist_job_check_trigger = yes
-	}
+		}
 
 	resources = {
 		category = planet_researchers
@@ -106,9 +108,10 @@ cloner_drone = {
 	condition_string = DRONE_JOB_TRIGGER
 	building_icon = building_cloning_lab2
 		
+	possible_precalc = can_fill_drone_job
+		
 	possible = {
-		drone_job_check_trigger = yes
-	}
+		}
 	
 	planet_modifier = {
 		planet_pop_assembly_add = 2
